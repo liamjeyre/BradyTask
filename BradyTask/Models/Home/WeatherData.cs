@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Converters;
+using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace BradyTask.Models.Home
@@ -20,6 +22,9 @@ namespace BradyTask.Models.Home
 
     public class Current
     {
+        [JsonPropertyName("dt")]
+        public int Date { get; set; }
+
         [JsonPropertyName("temp")]
         public double Temp { get; set; }
 
@@ -44,11 +49,14 @@ namespace BradyTask.Models.Home
 
     public class Daily
     {
+        [JsonPropertyName("dt")]
+        public int Date { get; set; }
+
         [JsonPropertyName("temp")]
         public Temp Temp { get; set; }
 
         [JsonPropertyName("weather")]
-        public List<WeatherData> Weather { get; set; }
+        public List<Weather> Weather { get; set; }
     }
 
     public class WeatherData

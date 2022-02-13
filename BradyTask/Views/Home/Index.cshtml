@@ -23,3 +23,12 @@
         </form>
     </div>
 </div>
+<div class="row">
+    @if (TempData["WeatherForecast"] != null)
+    {
+        <h4>
+            Next 7 day forecast for @ViewBag.Location
+        </h4>
+        <partial name="Partials/_ForecastTable" model="@TempData["WeatherForecast"]"/>
+    }
+</div>

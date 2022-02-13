@@ -59,11 +59,13 @@ namespace BradyTask.Controllers
                 var locationData = await GetLocationData(httpClient, searchQuery.Location);
                 if (locationData != null)
                 {
-                    searchQuery.WeatherForecast = await GetWeatherData(httpClient, locationData);
-                    if (searchQuery.WeatherForecast.ErrorMessage != null)
+                    var weatherForecast = await GetWeatherData(httpClient, locationData);
+                    if (weatherForecast.ErrorMessage != null)
                     {
                         ViewBag.ErrorMessage = locationData.ErrorMessage;
                     }
+                    ViewBag.Location = searchQuery.Location;
+                    TempData["WeatherForecast"] = weatherForecast;
                 }
                 else {
                     ViewBag.ErrorMessage = 

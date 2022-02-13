@@ -6,7 +6,5 @@ namespace BradyTask.Models.Home
     {
         [Required]
         public string Location { get; set; }
-
-        public WeatherData WeatherForecast { get; set; }
     }
 }

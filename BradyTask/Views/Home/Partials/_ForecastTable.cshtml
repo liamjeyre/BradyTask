@@ -1,0 +1,76 @@
+﻿@using BradyTask.Models.Home 
+@model BradyTask.Models.Home.WeatherData
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <h4>
+            Current weather
+        </h4>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Summary
+                </th>
+                <th>
+                    Temp (&deg;C)
+                </th>
+                <th>
+                    Feels Like (&deg;C)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.Current.Weather[0].Main
+                </td>
+                <td>
+                    @Model.Current.Temp
+                </td>
+                <td>
+                    @Model.Current.FeelsLike
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <h4>
+            Next 7 days
+        </h4>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Summary
+                </th>
+                <th>
+                    Min (&deg;C)
+                </th>
+                <th>
+                    Max (&deg;C)
+                </th>
+            </tr>
+            @foreach (Daily day in Model.Daily)
+            {
+                // Converting date from Unix to DateTime
+                var date = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(Convert.ToDouble(day.Date));
+
+                <tr>
+                    <td>
+                        @date.Date.ToString("dd/MM")
+                    </td>
+                    <td>
+                        @day.Weather[0].Main
+                    </td>
+                    <td>
+                        @day.Temp.Min
+                    </td>
+                    <td>
+                        @day.Temp.Max
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
