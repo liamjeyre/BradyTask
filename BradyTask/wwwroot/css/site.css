@@ -91,3 +91,7 @@ div.login-register-tab a.nav-link {
 div.card-content {
     padding: 10px;
 }
+
+.capitalize {
+    text-transform: capitalize;
+}

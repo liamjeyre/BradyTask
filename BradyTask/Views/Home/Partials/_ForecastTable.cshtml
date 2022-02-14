@@ -21,8 +21,8 @@
                 </th>
             </tr>
             <tr>
-                <td>
-                    @Model.Current.Weather[0].Main
+                <td class="capitalize">
+                    @Model.Current.Weather[0].Description
                 </td>
                 <td>
                     @Model.Current.Temp
@@ -58,10 +58,10 @@
 
                 <tr>
                     <td>
-                        @date.Date.ToString("dd/MM")
+                        @date.Date.Date.DayOfWeek.ToString().Substring(0,3) @date.Date.ToString("dd/MM")
                     </td>
-                    <td>
-                        @day.Weather[0].Main
+                    <td class="capitalize">
+                        @day.Weather[0].Description
                     </td>
                     <td>
                         @day.Temp.Min
